@@ -2,16 +2,20 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    background-color: gainsboro;
 }
 
 #app {
     margin: 0 auto;
+    min-width: 400px;
+    min-height: 400px;
 }
 
 .gridblock {
     display: inline-block;
-    border: 1px solid red;
-    height: 50px;
-    width: 50px;
+    border: 1px solid white;
+    transition-duration: 0.2s;
+    color: rgb(32, 221, 32);
+    font-weight: 700;
+    box-sizing: border-box;
 }
