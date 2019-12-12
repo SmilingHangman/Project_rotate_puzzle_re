@@ -8,7 +8,6 @@ document.getElementById("getPic").addEventListener("click", (event) => {
       let fetchedCatImg = result[0].url;
       let imgContainer = document.createElement("div");
       imgContainer.style.backgroundImage = 'url("' + fetchedCatImg + '")';
-      // imgContainer.style.backgroundPosition = "center";
 
       imgContainer.style.height = "400px";
       imgContainer.style.width = "400px";
@@ -37,20 +36,18 @@ document.getElementById("pictureCutter").addEventListener("click", (event) => {
       line.forEach((innerEl, innerElIndex) => {
         let gridBlock = document.createElement("div");
         gridBlock.textContent = innerEl;
-
-
         if (innerEl % 360 === 0) {
           gridBlock.textContent = innerEl + "GOOD!";
         }
         row.appendChild(gridBlock);
         gridBlock.className = "gridblock";
         gridBlock.style.backgroundImage = catImg;
+        gridBlock.style.backgroundRepeat = "no-repeat";
+        gridBlock.style.backgroundColor = "#000000";
         gridBlock.style.backgroundPosition = `-${imgContainerSize / gridSize * innerElIndex}px -${imgContainerSize / gridSize * lineIndex}px`;
-        console.log(gridBlock.style.backgroundPosition);
         gridBlock.style.height = String(imgContainerSize / gridSize) + "px";
         gridBlock.style.width = String(imgContainerSize / gridSize) + "px";
         gridBlock.style.transform = "rotate(" + String(innerEl) + "deg)";
-        // gridBlock.style.backgroundPosition = "center";
         gridBlock.addEventListener("click", function () {
           grid[lineIndex][innerElIndex] = grid[lineIndex][innerElIndex] + 90;
           const cell = grid[lineIndex][innerElIndex];
@@ -66,10 +63,6 @@ document.getElementById("pictureCutter").addEventListener("click", (event) => {
         });
       });
     });
-
-
-
-
   }
   pictureCutter();
 });
