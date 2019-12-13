@@ -14,6 +14,14 @@ body {
     min-width: 330px;
     min-height: 330px;
     border: 5px ridge rgb(99, 41, 85);
+    background-color: rgba(161, 133, 155, 0.63);
+}
+
+p {
+    max-width: 290px;
+    margin: 90px auto 0 auto;
+    color: rgb(250, 211, 218);
+    font-size: 18px;
 }
 
 .gridblock {
