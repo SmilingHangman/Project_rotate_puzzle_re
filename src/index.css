@@ -7,8 +7,8 @@ body {
 
 #app {
     margin: 0 auto;
-    min-width: 400px;
-    min-height: 400px;
+    width: 420px;
+    height: 420px;
     border: 5px ridge rgb(143, 86, 130);
 }
 

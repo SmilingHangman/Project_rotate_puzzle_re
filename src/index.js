@@ -9,8 +9,8 @@ document.getElementById("getPic").addEventListener("click", (event) => {
       let imgContainer = document.createElement("div");
       imgContainer.style.backgroundImage = 'url("' + fetchedCatImg + '")';
 
-      imgContainer.style.height = "400px";
-      imgContainer.style.width = "400px";
+      imgContainer.style.height = "420px";
+      imgContainer.style.width = "420px";
       imgContainerSize = parseInt(imgContainer.style.width, 10);
 
       imgContainer.style.backgroundRepeat = "no-repeat";
@@ -33,12 +33,17 @@ document.getElementById("pictureCutter").addEventListener("click", (event) => {
     grid.forEach((line, lineIndex) => {
       let row = document.createElement("div");
       document.getElementById("app").appendChild(row);
+      row.style.height = String(imgContainerSize / gridSize) + "px";
       line.forEach((innerEl, innerElIndex) => {
         let gridBlock = document.createElement("div");
-        gridBlock.textContent = innerEl;
+        // gridBlock.textContent = innerEl;
+        gridBlock.textContent = null;
         if (innerEl % 360 === 0) {
-          gridBlock.textContent = innerEl + "GOOD!";
-        }
+          // gridBlock.textContent = innerEl + "GOOD!";
+          gridBlock.style.borderColor = "#2eb82e";
+        } else {
+          gridBlock.style.borderColor = "#ffffff";
+        };
         row.appendChild(gridBlock);
         gridBlock.className = "gridblock";
         gridBlock.style.backgroundImage = catImg;
@@ -52,10 +57,13 @@ document.getElementById("pictureCutter").addEventListener("click", (event) => {
           grid[lineIndex][innerElIndex] = grid[lineIndex][innerElIndex] + 90;
           const cell = grid[lineIndex][innerElIndex];
           gridBlock.style.transform = "rotate(" + cell + "deg)";
-          gridBlock.textContent = cell;
+          // gridBlock.textContent = cell;
           if (cell % 360 === 0) {
-            gridBlock.textContent = cell + "GOOD!";
-          }
+            // gridBlock.textContent = cell + "GOOD!";
+            gridBlock.style.borderColor = "#2eb82e";
+          } else {
+            gridBlock.style.borderColor = "#ffffff";
+          };
           let correctPosition = (entry) => entry % 360 === 0;
           if (grid.every(row => row.every(correctPosition))) {
             alert("COMPLETE!")
