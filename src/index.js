@@ -66,6 +66,7 @@ document.getElementById("pictureCutter").addEventListener("click", (event) => {
           };
           let correctPosition = (entry) => entry % 360 === 0;
           if (grid.every(row => row.every(correctPosition))) {
+            // gridBlock.style.border = "none";
             alert("COMPLETE!")
           };
         });
