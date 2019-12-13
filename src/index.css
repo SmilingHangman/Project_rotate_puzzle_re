@@ -20,3 +20,14 @@ body {
     font-weight: 700;
     box-sizing: border-box;
 }
+
+form {
+    margin: 15px 0 0 0;
+}
+
+#getPic, #pictureCutter {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    text-align: center;
+}
