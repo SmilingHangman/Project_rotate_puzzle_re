@@ -1,4 +1,5 @@
 let catImg = null;
+// rawCatImg
 let imgContainerSize = null;
 
 document.getElementById("getPic").addEventListener("click", (event) => {
@@ -14,6 +15,7 @@ document.getElementById("getPic").addEventListener("click", (event) => {
       imgContainerSize = parseInt(imgContainer.style.width, 10);
 
       imgContainer.style.backgroundRepeat = "no-repeat";
+      imgContainer.style.backgroundSize = String(imgContainerSize) + "px";
       imgContainer.style.backgroundColor = "#000000";
       document.getElementById("app").innerHTML = null;
       document.getElementById("app").appendChild(imgContainer);
@@ -46,8 +48,12 @@ document.getElementById("pictureCutter").addEventListener("click", (event) => {
         };
         row.appendChild(gridBlock);
         gridBlock.className = "gridblock";
+
+        let gridBlockClass = document.getElementsByClassName("gridblock");
+
         gridBlock.style.backgroundImage = catImg;
         gridBlock.style.backgroundRepeat = "no-repeat";
+        gridBlock.style.backgroundSize = String(imgContainerSize) + "px";
         gridBlock.style.backgroundColor = "#000000";
         gridBlock.style.backgroundPosition = `-${imgContainerSize / gridSize * innerElIndex}px -${imgContainerSize / gridSize * lineIndex}px`;
         gridBlock.style.height = String(imgContainerSize / gridSize) + "px";
@@ -65,9 +71,9 @@ document.getElementById("pictureCutter").addEventListener("click", (event) => {
             gridBlock.style.borderColor = "#ffffff";
           };
           let correctPosition = (entry) => entry % 360 === 0;
-          if (grid.every(row => row.every(correctPosition))) {
-            // gridBlock.style.border = "none";
-            alert("COMPLETE!")
+          if (grid.every(row => row.every(correctPosition, gridBlock))) {           
+            [...gridBlockClass].forEach(el => el.style.border = "none");
+            setTimeout(() => {alert("COMPLETED!")}, 500);
           };
         });
       });
