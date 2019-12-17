@@ -16,6 +16,7 @@ document.getElementById("getPic").addEventListener("click", (event) => {
 
       imgContainer.style.backgroundRepeat = "no-repeat";
       imgContainer.style.backgroundSize = String(imgContainerSize) + "px";
+      imgContainer.style.backgroundPosition = "left calc(50%)";
       imgContainer.style.backgroundColor = "#000000";
       document.getElementById("app").innerHTML = "";
       document.getElementById("app").appendChild(imgContainer);
@@ -63,7 +64,7 @@ document.getElementById("pictureCutter").addEventListener("click", (event) => {
         gridBlock.style.backgroundRepeat = "no-repeat";
         gridBlock.style.backgroundSize = String(imgContainerSize) + "px";
         gridBlock.style.backgroundColor = "#000000";
-        gridBlock.style.backgroundPosition = `-${imgContainerSize / gridSize * innerElIndex}px -${imgContainerSize / gridSize * lineIndex}px`;
+        gridBlock.style.backgroundPosition = `-${imgContainerSize / gridSize * innerElIndex}px calc(50% - ${(imgContainerSize / gridSize * (lineIndex-1+((3 - gridSize)*0.5)))}px)`; //+(-0.5*lineIndex))
         gridBlock.style.height = String(imgContainerSize / gridSize) + "px";
         gridBlock.style.width = String(imgContainerSize / gridSize) + "px";
         gridBlock.style.transform = "rotate(" + String(innerEl) + "deg)";
