@@ -3,7 +3,7 @@ let catImg = null;
 let imgContainerSize = null;
 
 document.getElementById("getPic").addEventListener("click", (event) => {
-  fetch("https://api.thecatapi.com/v1/images/search?size=full", { headers: { "x-api-key": "b3c5b342-8b76-4f6a-bca6-14a7c4e6f0d9" } })
+  fetch("https://api.thecatapi.com/v1/images/search?size=med", { headers: { "x-api-key": "b3c5b342-8b76-4f6a-bca6-14a7c4e6f0d9" } })
     .then(response => response.json())
     .then(result => {
       let fetchedCatImg = result[0].url;
@@ -17,7 +17,7 @@ document.getElementById("getPic").addEventListener("click", (event) => {
       imgContainer.style.backgroundRepeat = "no-repeat";
       imgContainer.style.backgroundSize = String(imgContainerSize) + "px";
       imgContainer.style.backgroundColor = "#000000";
-      document.getElementById("app").innerHTML = null;
+      document.getElementById("app").innerHTML = "";
       document.getElementById("app").appendChild(imgContainer);
       catImg = 'url("' + fetchedCatImg + '")';
     })
@@ -25,8 +25,16 @@ document.getElementById("getPic").addEventListener("click", (event) => {
 });
 
 document.getElementById("pictureCutter").addEventListener("click", (event) => {
-  document.getElementById("app").innerHTML = null;
+  document.getElementById("app").innerHTML = "";
   let gridSize = Number(document.getElementById("gridSize").value);
+  if (gridSize < 3) {
+    gridSize = 3
+    document.getElementById("gridSize").value = "3"
+  };
+  if (gridSize > 7) {
+    gridSize = 7
+    document.getElementById("gridSize").value = "7"
+  };
   function pictureCutter() {
     gridSize = typeof gridSize !== "undefined" ? gridSize : 3;
 
