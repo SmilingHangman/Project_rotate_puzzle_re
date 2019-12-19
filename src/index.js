@@ -83,6 +83,16 @@ document.getElementById("pictureCutter").addEventListener("click", (event) => {
           if (grid.every(row => row.every(correctPosition, gridBlock))) {           
             [...gridBlockClass].forEach(el => el.style.border = "none");
             setTimeout(() => {alert("COMPLETED!")}, 500);
+            document.getElementById("app").innerHTML = "";
+            let imgContainer = document.createElement("div");
+            imgContainer.style.backgroundImage = catImg;
+            imgContainer.style.height = "335px";
+            imgContainer.style.width = "335px";
+            imgContainer.style.backgroundRepeat = "no-repeat";
+            imgContainer.style.backgroundSize = String(imgContainerSize) + "px";
+            imgContainer.style.backgroundPosition = "left calc(50%)";
+            imgContainer.style.backgroundColor = "#000000";
+            document.getElementById("app").appendChild(imgContainer);
           };
         });
       });
