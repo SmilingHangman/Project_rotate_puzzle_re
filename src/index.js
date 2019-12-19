@@ -10,8 +10,8 @@ document.getElementById("getPic").addEventListener("click", (event) => {
       let imgContainer = document.createElement("div");
       imgContainer.style.backgroundImage = 'url("' + fetchedCatImg + '")';
 
-      imgContainer.style.height = "330px";
-      imgContainer.style.width = "330px";
+      imgContainer.style.height = "335px";
+      imgContainer.style.width = "335px";
       imgContainerSize = parseInt(imgContainer.style.width, 10);
 
       imgContainer.style.backgroundRepeat = "no-repeat";

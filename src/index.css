@@ -12,8 +12,8 @@ body {
 
 #app {
     margin: 20px auto 0 auto;
-    min-width: 330px;
-    min-height: 330px;
+    min-width: 335px;
+    min-height: 335px;
     border: 5px ridge rgb(99, 41, 85);
     background-color: rgba(161, 133, 155, 0.63);
 }
