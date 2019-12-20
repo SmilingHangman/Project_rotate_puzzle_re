@@ -49,12 +49,31 @@ document.getElementById("pictureCutter").addEventListener("click", (event) => {
         let gridBlock = document.createElement("div");
         // gridBlock.textContent = innerEl;
         gridBlock.textContent = null;
-        if (innerEl % 360 === 0) {
-          // gridBlock.textContent = innerEl + "GOOD!";
-          gridBlock.style.borderColor = "#2eb82e";
-        } else {
+
+        document.getElementById("bordersToggler").addEventListener("change", (event) => {
+          if (event.target.checked) {
+            if (innerEl % 360 === 0) {
+              // gridBlock.textContent = innerEl + "GOOD!";
+              gridBlock.style.borderColor = "#2eb82e";
+            } else {
+              gridBlock.style.borderColor = "#ffffff";
+            }
+          } else {
+            gridBlock.style.borderColor = "#ffffff";
+          }
+        });
+
+        if (document.getElementById("bordersToggler").checked === true) {
+          if (innerEl % 360 === 0) {
+            // gridBlock.textContent = innerEl + "GOOD!";
+            gridBlock.style.borderColor = "#2eb82e";
+          } else {
+            gridBlock.style.borderColor = "#ffffff";
+          }
+        } else if (document.getElementById("bordersToggler").checked === false) {
           gridBlock.style.borderColor = "#ffffff";
-        };
+        }
+
         row.appendChild(gridBlock);
         gridBlock.className = "gridblock";
 
@@ -73,16 +92,35 @@ document.getElementById("pictureCutter").addEventListener("click", (event) => {
           const cell = grid[lineIndex][innerElIndex];
           gridBlock.style.transform = "rotate(" + cell + "deg)";
           // gridBlock.textContent = cell;
-          if (cell % 360 === 0) {
-            // gridBlock.textContent = cell + "GOOD!";
-            gridBlock.style.borderColor = "#2eb82e";
-          } else {
+
+          document.getElementById("bordersToggler").addEventListener("change", (event) => {
+            if (event.target.checked) {
+              if (cell % 360 === 0) {
+                // gridBlock.textContent = innerEl + "GOOD!";
+                gridBlock.style.borderColor = "#2eb82e";
+              } else {
+                gridBlock.style.borderColor = "#ffffff";
+              }
+            } else {
+              gridBlock.style.borderColor = "#ffffff";
+            }
+          });
+
+          if (document.getElementById("bordersToggler").checked === true) {
+            if (cell % 360 === 0) {
+              // gridBlock.textContent = cell + "GOOD!";
+              gridBlock.style.borderColor = "#2eb82e";
+            } else {
+              gridBlock.style.borderColor = "#ffffff";
+            }
+          } else if (document.getElementById("bordersToggler").checked === false) {
             gridBlock.style.borderColor = "#ffffff";
-          };
+          }
+
           let correctPosition = (entry) => entry % 360 === 0;
-          if (grid.every(row => row.every(correctPosition, gridBlock))) {           
+          if (grid.every(row => row.every(correctPosition, gridBlock))) {
             [...gridBlockClass].forEach(el => el.style.border = "none");
-            setTimeout(() => {alert("COMPLETED!")}, 500);
+            setTimeout(() => { alert("COMPLETED!") }, 500);
             document.getElementById("app").innerHTML = "";
             let imgContainer = document.createElement("div");
             imgContainer.style.backgroundImage = catImg;
