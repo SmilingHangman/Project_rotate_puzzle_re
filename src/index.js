@@ -39,7 +39,7 @@ document.getElementById("pictureCutter").addEventListener("click", (event) => {
   function pictureCutter() {
     gridSize = typeof gridSize !== "undefined" ? gridSize : 3;
 
-    let grid = [...Array(gridSize)].map(() => [...Array(gridSize)].map(() => ((Math.floor(Math.random() * 10 + 1)) * 90)))
+    let grid = [...Array(gridSize)].map(() => [...Array(gridSize)].map(() => ((Math.floor(Math.random() * 3 + 1)) * 90)))
 
     grid.forEach((line, lineIndex) => {
       let row = document.createElement("div");
